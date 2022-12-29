@@ -1,20 +1,36 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { View, StyleSheet } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { CustomFlatList } from "./src/components/CustomFlatList";
+import { InputCustom } from "./src/components/InputCustom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Todos } from "./src/components/Todos";
+import { ReactHookForm } from "./src/components/ReactHookForm";
+import { MainNavigator } from "./src/components/navigators";
+
+const queryClient = new QueryClient();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <QueryClientProvider client={queryClient}>
+      <NavigationContainer>
+        {/* <View style={styles.container}> */}
+        {/* <CustomFlatList /> */}
+        {/* <InputCustom /> */}
+        {/* <Todos /> */}
+        {/* {<ReactHookForm />} */}
+        {/* </View> */}
+        <MainNavigator />
+      </NavigationContainer>
+    </QueryClientProvider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
   },
 });
